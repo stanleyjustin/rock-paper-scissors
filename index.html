@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+
+// Computer play function - generates a random number between 0 and 2
+function computerPlay(min, max) {
+    min = Math.ceil(0);
+    max = Math.floor(3);
+    let computerChoice = Math.floor(Math.random() * (max - min)) + min;
+    if (computerChoice === 0) {
+        return "rock";
+    } else if (computerChoice === 1) {
+        return "paper";
+    } else {
+        return "scissors";
+    }
+}
+// variables declaring starting scores and round having a zero value
+let cScore = 0;
+let pScore = 0;
+let round = 0;
+
+// A single round determining winner of round and point distribution
+function playRound(playerSelection, computerSelection) {
+    computerSelection = computerPlay()
+    playerSelection = prompt("Type rock, paper, or scissors",'').toLowerCase();
+//Player choose rock
+    if (playerSelection === "rock" && computerSelection === "rock") {
+        round++;
+        return "You and the computer both choose rock. It's a tie!"
+    } else if (playerSelection === "rock" && computerSelection === "paper") {
+        cScore++;
+        round++;
+        return "Your rock was covered in computer's paper. You lose!";
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        pScore++;
+        round++;
+        return "Your rock smashed computer's scissors to bits. You win!";
+    }
+//Player choose paper
+    if (playerSelection === "paper" && computerSelection === "rock") {
+        pScore++;
+        round++;
+        return "You cover the computer's pathetic rock in paper. Victory is yours!";
+    } else if (playerSelection === "paper" && computerSelection === "paper") {
+        round++;
+        return "You and the computer both choose paper. It's a tie!"
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        cScore++;
+        round++;
+        return "You throw paper and the computer turns it into confetti with their scissors. You lose!";
+    }
+//Player choose scissors
+    if (playerSelection === "scissors" && computerSelection === "rock") {
+        cScore++;
+        round++;
+        return "Your precious scissors are smashed to smitherines by the computer's rock! You lose!";
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        pScore++;
+        round++;
+        return "You shred computer's paper like legal documents during the last financial crisis. Epic victory!";
+    } else if (playerSelection === "scissors" && computerSelection === "scissors") {
+        round++;
+        return "You and the computer both throw scissors. They make a terrible sound together and nobody wins. Tie!"
+    } else {
+        return ("I don't understand. Choose rock, paper, or scissors.")
+    }
+}
+
+//Play game - 5 round - declares winner best 3 of 5
+function game() {
+    if (round === 5 && pScore > cScore) {
+        pScore = 0;
+        cScore = 0;
+        round = 0;
+        return "You win! You put that machine in it's place!";
+    } else if (round === 5 && cScore > pScore) {
+        pScore = 0;
+        cScore = 0;
+        round = 0;
+        return "The computer wins. Tsk Tsk. Try again!";
+    } else if (pScore === 3  && cScore < 3){
+        pScore = 0;
+        cScore = 0;
+        round = 0;
+        return "You win! You put that machine in it's place!";
+    } else if (pScore < 3  && cScore === 3){
+        pScore = 0;
+        cScore = 0;
+        round = 0;
+        return "You win! You put that machine in it's place!";
+    } else if (round === 5 && pScore === cScore) {
+        return "It's a tie! Again! There can only be one Highlander!"
+    } else {
+        return ("End of round #" + round + " Human: " + pScore + " - " + "Computer: " + cScore)
+    }
+}
+// How to play - open console and use the following two console.log commands and hit run
+
+const playerSelection = 'rock'
+const computerSelection = computerPlay()
+console.log(playRound(playerSelection, computerSelection))
+console.log(game())
+    
+  </script>
+</body>
+</html>
+
