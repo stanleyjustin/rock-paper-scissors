@@ -1,3 +1,45 @@
-li {
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.title {
+    font-size: 22px;
+}
+
+.rules-of-game {
     list-style: none;
+}
+
+.rules-of-game li {
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.buttons {
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.scoremsg {
+    margin-bottom: 30px;
+    font-size: 20px
+}
+
+.scoreboard {
+    margin-bottom: 30px;
+    font-size: 20px
 }
